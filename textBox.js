@@ -1,12 +1,13 @@
-const DOM = React.DOM;
-
 const TextBox = ({ str }) => (
-  DOM.span(null, str)  
+  DOM.span(
+    {style: { display: 'inline-block' }},
+    str)  
 );
 
-ReactDOM.render(
-  React.createElement(TextBox, {
-   str: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-  }),
-  document.getElementById('textbox')
-);
+TextBox.propTypes = {
+  str: PropTypes.string
+};
+
+TextBox.defaultProps = {
+  str: "Будущее, с какого-то момента, будет в некоторой степени отличаться от настоящего. Есть много исторических анекдотов и поучительных историй, доказывающих эту теорию. Вот и все — теперь вы экономист."
+};

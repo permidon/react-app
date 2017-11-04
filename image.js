@@ -1,15 +1,21 @@
-const DOM = React.DOM;
+const { DOM, PropTypes } = React;
 
-const Image = ({ src, width, height, alt }) => {
-  return DOM.img({ src, width, height, alt })
+const { bind } = _;
+
+const Image = ({ src, width, height, alt }) => (
+  DOM.img({ src, width, height, alt })
+);
+
+Image.propTypes = {
+  src: PropTypes.string,
+  width: PropTypes.oneOfType([ PropTypes.number, PropTypes.string ]),
+  height: PropTypes.oneOfType([ PropTypes.number, PropTypes.string ]),
+  alt: PropTypes.string
 };
 
-ReactDOM.render(
-  React.createElement(Image, {
-   src: 'https://cdn1.iconfinder.com/data/icons/UltraBuuf/128/kitty.png', 
-   width: 128, 
-   height: 128,
-   alt: 'Kitti'
-  }),
-  document.getElementById('image')
-);
+Image.defaultProps = {
+  src: "https://cdn0.iconfinder.com/data/icons/building-signage-01/204/icon_nocamera-128.png",
+  width: 128,
+  height: 128,
+  alt: "Default post image"
+};

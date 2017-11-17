@@ -1,9 +1,9 @@
 const { DOM, PropTypes } = React;
 
-const { bind } = _;
+const { bind, assign } = _;
 
 const Image = ({ src, width, height, alt }) => (
-  DOM.img({ src, width, height, alt })
+  DOM.img({style: { float: 'left' }, src, width, height, alt })
 );
 
 Image.propTypes = {

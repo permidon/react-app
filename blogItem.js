@@ -1,21 +1,25 @@
-const BlogItem = ( props ) => (
+const BlogItem = ({id, title, image, txt, meta, addLike}) => (
   DOM.div(
-    {style: { background: 'lightgreen'} },
-    React.createElement( Image, {src: props.src} ),
-    React.createElement( TextBox, {str: props.str} ),
-    React.createElement( Like, props.metadata ),
-    React.createElement( MetaData, props.metadata )
+    {id: id, style: { marginBottom: '15px', background: 'lightgreen'} },
+    DOM.div({style: { minHeight: '110px'}}, React.createElement( Image, image ), React.createElement( TextBox, {}, txt )),
+    DOM.br({}),
+    React.createElement( Meta, meta ),
+    React.createElement( Like, {id: id, likesCounter: meta.likesCounter, addLike: addLike } )
    )
 );
 
 BlogItem.propTypes = {
-  src: PropTypes.string,
-  str: PropTypes.string,
-  metadata: PropTypes.object,
-}
+  id: PropTypes.string,
+  title: PropTypes.string,
+  image: PropTypes.object,
+  txt: PropTypes.string,
+  meta: PropTypes.object,
+};
 
 BlogItem.defaultProps = {
-  src: Image.src,
-  str: TextBox.str,
-  metadata: MetaData.metadata
-}
+  id: null,
+  title: 'Untitled',
+  image: Image.props,
+  txt: TextBox.children,
+  meta: Meta.props,
+};

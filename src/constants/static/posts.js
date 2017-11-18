@@ -1,4 +1,6 @@
-const posts = [
+import {formatDate} from 'helpers/date';
+
+export const posts = [
   {
     id: 'post-1',
     title: 'Post 1',
@@ -7,7 +9,7 @@ const posts = [
       alt: 'First post image'
     },
     meta: {
-      createdAt: moment().subtract(12, 'days').subtract(3, 'hours').subtract(14, 'minutes').subtract(23, 'seconds').format('MM/DD/YYYY, h:mm a'),
+      createdAt: formatDate('20171110'),
       likesCounter: 2
     }
   },
@@ -28,7 +30,7 @@ const posts = [
     },
     txt: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     meta: {
-      updatedAt: moment().subtract(12, 'days').subtract(3, 'hours').subtract(14, 'minutes').subtract(23, 'seconds').format('MM/DD/YYYY, h:mm a'),
+      updatedAt: formatDate('20171111'),
       likesCounter: 1
     }
   },

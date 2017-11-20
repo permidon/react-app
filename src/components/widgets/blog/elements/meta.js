@@ -6,7 +6,9 @@ import { formatDate } from 'helpers/date';
 
 const Meta = ({ author, createdAt, updatedAt }) => (
   DOM.div({style: { display: 'inline-block' }},
-    React.createElement('p', {style: { fontSize: '14px' }}, `Написал: ${author} ${createdAt} (Изменено: ${updatedAt})`)
+    React.createElement('p',
+      { style: { fontSize: '14px' } },
+      `Написал: ${author} ${createdAt} (Изменено: ${updatedAt})`)
   )
 );
 
@@ -18,8 +20,8 @@ Meta.defaultProps = {
 
 Meta.propTypes = {
   author: PropTypes.string,
-  createdAt: PropTypes.oneOfType([ PropTypes.string, PropTypes.date ]),
-  updatedAt: PropTypes.oneOfType([ PropTypes.string, PropTypes.date ])
+  createdAt: PropTypes.string,
+  updatedAt: PropTypes.string
 };
 
 export default Meta;

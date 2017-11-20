@@ -1,5 +1,6 @@
 import React from 'react';
 import DOM from 'react-dom-factories';
+import PropTypes from 'prop-types';
 
 import _ from 'lodash';
 import { posts } from 'constants/static/posts';
@@ -27,14 +28,22 @@ class BlogPage extends React.Component {
   }
     
   render() {
-    const pieColumns = _.map(posts, post => [post.title, post.meta.likesCounter]);
+    const pieColumns = _.map(
+      posts, post => [post.title, post.meta.likesCounter]
+    );
     
     return DOM.div({},
-      React.createElement(BlogList, { posts: this.state.posts, addLike: this.addLike }),
-      React.createElement(PieChart, { columns: pieColumns })
+      React.createElement(BlogList,
+        { posts: this.state.posts, addLike: this.addLike }),
+      React.createElement(PieChart,
+        { columns: pieColumns })
     );
   }
 }
+
+BlogPage.propTypes = {
+  posts: PropTypes.array
+};
 
 export default BlogPage;
 

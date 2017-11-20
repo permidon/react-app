@@ -13,7 +13,7 @@ Image.propTypes = {
 };
 
 Image.defaultProps = {
-  src: 'https://cdn0.iconfinder.com/data/icons/building-signage-01/204/icon_nocamera-128.png',
+  src: 'http://tinyurl.com/ybrmbhey',
   width: 128,
   height: 128,
   alt: 'Default post image'

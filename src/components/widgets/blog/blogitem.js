@@ -12,10 +12,11 @@ const BlogItem = ({id, title, image, txt, meta, addLike}) => (
     {id, style: { marginBottom: '15px', background: 'lightgray'} },
     DOM.div({ className: 'row', style: { minHeight: '150px' } },
       React.createElement(Image, image),
-      DOM.h3({}, title ),
+      DOM.h3({}, title),
       React.createElement(TextBox, {}, txt)),
-    DOM.div({ className: 'row', style: { display: 'inline-block', minHeight: '50px' } },
-      React.createElement(Like, { id, likesCounter: meta.likesCounter, addLike }),
+    DOM.div(
+      {className: 'row', style: {display: 'inline-block', minHeight: '50px'}},
+      React.createElement(Like, {id, likesCounter: meta.likesCounter, addLike}),
       React.createElement(Meta, meta)
     )
   )

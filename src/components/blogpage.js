@@ -32,11 +32,16 @@ class BlogPage extends React.Component {
       posts, post => [post.title, post.meta.likesCounter]
     );
     
-    return DOM.div({},
-      React.createElement(BlogList,
-        { posts: this.state.posts, addLike: this.addLike }),
-      React.createElement(PieChart,
-        { columns: pieColumns })
+    return DOM.div(
+      {},
+      React.createElement(
+        BlogList,
+        { posts: this.state.posts, addLike: this.addLike }
+      ),
+      React.createElement(
+        PieChart,
+        { columns: pieColumns }
+      )
     );
   }
 }

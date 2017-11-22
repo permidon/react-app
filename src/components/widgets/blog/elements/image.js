@@ -1,6 +1,5 @@
-const { DOM, PropTypes } = React;
-
-const { bind, assign } = _;
+import DOM from 'react-dom-factories';
+import PropTypes from 'prop-types';
 
 const Image = ({ src, width, height, alt }) => (
   DOM.img({style: { float: 'left' }, src, width, height, alt })
@@ -14,8 +13,10 @@ Image.propTypes = {
 };
 
 Image.defaultProps = {
-  src: "https://cdn0.iconfinder.com/data/icons/building-signage-01/204/icon_nocamera-128.png",
+  src: 'http://tinyurl.com/ybrmbhey',
   width: 128,
   height: 128,
-  alt: "Default post image"
+  alt: 'Default post image'
 };
+
+export default Image;

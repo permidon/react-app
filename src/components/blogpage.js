@@ -45,7 +45,7 @@ class BlogPage extends React.Component {
     return DOM.div(
       {},
       React.createElement(
-        BlogList,
+        BlogList, 
         { posts: this.state.posts, addLike: this.addLike }
       ),
       React.createElement(

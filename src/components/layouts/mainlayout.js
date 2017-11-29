@@ -16,9 +16,10 @@ const MainLayout = ({children}) => (
   </Container>
 );
 
-MainLayout.PropTypes = {
+MainLayout.propTypes = {
   children: PropTypes.node
 };
+
 const GoBackButton = () => (
   <Button onClick={() => history.goBack()}>Назад</Button>
 );

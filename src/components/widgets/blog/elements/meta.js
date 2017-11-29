@@ -8,7 +8,8 @@ const Meta = ({ author, createdAt, updatedAt }) => (
   DOM.div({style: { display: 'inline-block' }},
     React.createElement('p',
       { style: { fontSize: '14px' } },
-      `Написал: ${author} ${formatDate(createdAt)} (Изменено: ${formatDate(updatedAt)})`)
+      `Написал: ${author} ${formatDate(createdAt)}
+      (Изменено: ${formatDate(updatedAt)})`)
   )
 );
 

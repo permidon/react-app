@@ -1,4 +1,4 @@
-import MainLayout from 'components/layouts/mainlayout'
+import MainLayout from 'components/layouts/mainlayout';
 import BlogPage from 'components/blogpage';
 import Post from 'components/post';
 

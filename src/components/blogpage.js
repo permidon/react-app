@@ -32,14 +32,14 @@ class BlogPage extends React.Component {
   addLike(id) {
     this.setState((prevState) => {
       const post = _.find(prevState.posts, ['id', id]);
-      post.meta.likesCounter += 1;
+      post.likesCounter += 1;
       return { posts: prevState.posts };
     });
   }
 
   render() {
     const pieColumns = _.map(
-      this.state.posts, post => [post.title, post.meta.likesCounter]
+      this.state.posts, post => [post.title, post.likesCounter]
     );
     
     return DOM.div(

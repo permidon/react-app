@@ -10,6 +10,7 @@ class Post extends React.Component {
   constructor(props) {
     super(props);
     this.state = props;
+    this.addLike = this.addLike.bind(this);
   }
 
   componentDidMount() {
@@ -24,12 +25,20 @@ class Post extends React.Component {
     );
   }
 
+  addLike() {
+    this.setState((prevState) => {
+      const post = prevState.post;
+      post.likesCounter += 1;
+      return { post: prevState.post };
+    });
+  }
+
   render() {
     return DOM.div(
       {},
       React.createElement(
         BlogItem,
-        { post: this.state.post }
+        { post: this.state.post, addLike: this.addLike }
       )
     );
   }

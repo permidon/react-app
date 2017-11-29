@@ -36,7 +36,8 @@ const BlogItem = ({ post, addLike }) => (
         Like,
         {
           id: post.id,
-          likesCounter: post.meta.likesCounter,
+          // likesCounter: post.meta.likesCounter,
+          likesCounter: post.likesCounter,
           addLike
         }
       ),

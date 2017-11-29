@@ -1,8 +1,8 @@
 import DOM from 'react-dom-factories';
 import PropTypes from 'prop-types';
 
-const TextBox = (props) => (
-  DOM.span({}, props.children)
+const TextBox = ({children}) => (
+  DOM.span({}, children)
 );
 
 TextBox.propTypes = {

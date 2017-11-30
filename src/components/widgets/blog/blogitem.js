@@ -7,10 +7,13 @@ import TextBox from 'components/widgets/blog/elements/textbox';
 import Like from 'components/widgets/blog/elements/like';
 import Meta from 'components/widgets/blog/elements/meta';
 
-const BlogItem = ({id, title, image, txt, meta, addLike}) => (
+import Link from 'components/elements/link';
+import { postsPath } from 'helpers/routes';
+
+const BlogItem = ({ post, addLike }) => (
   DOM.div(
     {
-      id,
+      id: post.id,
       style: { marginBottom: '15px', background: 'lightgray' }
     },
     DOM.div(
@@ -18,9 +21,12 @@ const BlogItem = ({id, title, image, txt, meta, addLike}) => (
         className: 'row',
         style: { minHeight: '150px' }
       },
-      React.createElement(Image, image),
-      DOM.h3({}, title),
-      React.createElement(TextBox, {}, txt)),
+      React.createElement(Image, post.image),
+      DOM.h3(
+        {},
+        React.createElement(Link, {to: postsPath(post.id)}, post.title)
+      ),
+      React.createElement(TextBox, {}, post.txt)),
     DOM.div(
       {
         className: 'row',
@@ -29,30 +35,23 @@ const BlogItem = ({id, title, image, txt, meta, addLike}) => (
       React.createElement(
         Like,
         {
-          id,
-          likesCounter: meta.likesCounter,
+          id: post.id,
+          // likesCounter: post.meta.likesCounter,
+          likesCounter: post.likesCounter,
           addLike
         }
       ),
-      React.createElement(Meta, meta)
+      React.createElement(Meta, post.meta)
     )
   )
 );
 
 BlogItem.propTypes = {
-  id: PropTypes.string,
-  title: PropTypes.string,
-  image: PropTypes.object,
-  txt: PropTypes.string,
-  meta: PropTypes.object,
+  post: PropTypes.object
 };
 
 BlogItem.defaultProps = {
-  id: null,
-  title: 'Untitled',
-  image: Image.props,
-  txt: TextBox.children,
-  meta: Meta.props,
+  post: {}
 };
 
 export default BlogItem;

@@ -2,8 +2,9 @@ import React from 'react';
 import DOM from 'react-dom-factories';
 import PropTypes from 'prop-types';
 
-import _ from 'lodash';
-import { posts } from 'constants/static/posts';
+import { find, map } from 'lodash';
+
+import request from 'superagent';
 
 import BlogList from 'components/widgets/blog/bloglist';
 import PieChart from 'components/widgets/blog/piechart';
@@ -12,30 +13,39 @@ import PieChart from 'components/widgets/blog/piechart';
 class BlogPage extends React.Component {
   constructor(props) {
     super(props);
-    
-    const posts = _.assign({}, props.posts);
-    
-    this.state = { posts };
-    this.addLike = this.addLike.bind(this);  
+    this.state = props;
+    this.addLike = this.addLike.bind(this);
+  }
+
+  componentDidMount() {
+    this.fetchPosts();
+  }
+
+  fetchPosts() {
+    request.get(
+      'http://localhost:3001',
+      {},
+      (err, res) => this.setState({ posts: res.body })
+    );
   }
     
   addLike(id) {
     this.setState((prevState) => {
-      const post = _.find(prevState.posts, ['id', id]);
-      post.meta.likesCounter += 1;
+      const post = find(prevState.posts, ['id', id]);
+      post.likesCounter += 1;
       return { posts: prevState.posts };
     });
   }
-    
+
   render() {
-    const pieColumns = _.map(
-      posts, post => [post.title, post.meta.likesCounter]
+    const pieColumns = map(
+      this.state.posts, post => [post.title, post.likesCounter]
     );
     
     return DOM.div(
       {},
       React.createElement(
-        BlogList,
+        BlogList, 
         { posts: this.state.posts, addLike: this.addLike }
       ),
       React.createElement(

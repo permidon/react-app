@@ -17,7 +17,7 @@ Like.defaultProps = {
 
 Like.propTypes = {
   likesCounter: PropTypes.number,
-  id: PropTypes.string,
+  id: PropTypes.number,
   addLike: PropTypes.func
 };
 

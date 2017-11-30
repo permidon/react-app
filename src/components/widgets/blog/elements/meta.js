@@ -8,14 +8,15 @@ const Meta = ({ author, createdAt, updatedAt }) => (
   DOM.div({style: { display: 'inline-block' }},
     React.createElement('p',
       { style: { fontSize: '14px' } },
-      `Написал: ${author} ${createdAt} (Изменено: ${updatedAt})`)
+      `Написал: ${author} ${formatDate(createdAt)}
+      (Изменено: ${formatDate(updatedAt)})`)
   )
 );
 
 Meta.defaultProps = {
   author: 'Anonymous',
-  createdAt: formatDate('2011111'),
-  updatedAt: formatDate('2011111'),
+  createdAt: '2011111',
+  updatedAt: '2011111',
 };
 
 Meta.propTypes = {

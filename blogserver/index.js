@@ -1,8 +1,10 @@
+/* eslint-disable */
+
 var express = require('express');
 var application = express();
 
 var cors = require('cors');
-var posts = require('./data').posts
+var posts = require('./data').posts;
 
 application.use(cors());
 
@@ -15,5 +17,5 @@ application.get('/posts/:id', function(req, res) {
 });
 
 application.listen(3001, function () {
-  console.log('Server on 3001')
+  console.log('Server on 3001');
 });

@@ -1,6 +1,6 @@
 import React from 'react';
 import DOM from 'react-dom-factories';
-import _ from 'lodash';
+import { map } from 'lodash';
 
 import BlogItem from 'components/widgets/blog/blogitem';
 
@@ -8,7 +8,7 @@ const BlogList = ({ posts, addLike }) => (
   DOM.div(
     {},
     DOM.ul({ style: { paddingLeft: '0px' } },
-      _.map(
+      map(
         posts, (post) => (
           React.createElement(
             'li',

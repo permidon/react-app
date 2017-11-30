@@ -2,7 +2,7 @@ import React from 'react';
 import DOM from 'react-dom-factories';
 import PropTypes from 'prop-types';
 
-import _ from 'lodash';
+import { find, map } from 'lodash';
 
 import request from 'superagent';
 
@@ -31,14 +31,14 @@ class BlogPage extends React.Component {
     
   addLike(id) {
     this.setState((prevState) => {
-      const post = _.find(prevState.posts, ['id', id]);
+      const post = find(prevState.posts, ['id', id]);
       post.likesCounter += 1;
       return { posts: prevState.posts };
     });
   }
 
   render() {
-    const pieColumns = _.map(
+    const pieColumns = map(
       this.state.posts, post => [post.title, post.likesCounter]
     );
     

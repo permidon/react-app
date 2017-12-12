@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { find, map } from 'lodash';
 
-import request from 'superagent';
+// import request from 'superagent';
 
 import BlogList from 'components/widgets/blog/bloglist';
 import PieChart from 'components/widgets/blog/piechart';
@@ -17,17 +17,17 @@ class BlogPage extends React.Component {
     this.addLike = this.addLike.bind(this);
   }
 
-  componentDidMount() {
-    this.fetchPosts();
-  }
+  // componentDidMount() {
+  //   this.fetchPosts();
+  // }
 
-  fetchPosts() {
-    request.get(
-      'http://localhost:3001',
-      {},
-      (err, res) => this.setState({ posts: res.body })
-    );
-  }
+  // fetchPosts() {
+  //   request.get(
+  //     'http://localhost:3001',
+  //     {},
+  //     (err, res) => this.setState({ posts: res.body })
+  //   );
+  // }
     
   addLike(id) {
     this.setState((prevState) => {
@@ -61,4 +61,3 @@ BlogPage.propTypes = {
 };
 
 export default BlogPage;
-

@@ -9,13 +9,6 @@ const initialState = {
   entry: null
 };
 
-function addLike(entry) {
-  if (entry) {
-    entry.likesCounter += 1;
-    return entry;
-  }
-}
-
 export default function(state = initialState, action) {
   switch (action.type) {
     case types.FETCH_POST_REQUEST:
@@ -25,8 +18,13 @@ export default function(state = initialState, action) {
     case types.FETCH_POST_SUCCESS:
       return assign({}, initialState, { entry: action.response });
     case type.ADD_LIKE: {
-      const entry = cloneDeep(state.entry);
-      return assign({}, initialState, { entry: addLike(entry) });
+      if (state.entry && state.entry.id == action.id) {
+        const item = cloneDeep(state.entry);
+        item.likesCounter += 1;
+        return assign({}, state, { entry: item });
+      } else {
+        return state;
+      }
     }
     default:
       return state;

@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 
 import Image from 'components/widgets/blog/elements/image';
 import TextBox from 'components/widgets/blog/elements/textbox';
-import Like from 'components/widgets/blog/elements/like';
+import LikeContainer from 'containers/LikeContainer';
 import Meta from 'components/widgets/blog/elements/meta';
 
 import Link from 'components/elements/link';
 import { postsPath } from 'helpers/routes';
 
-const BlogItem = ({ post, addLike }) => (
+const BlogItem = ({ post }) => (
   DOM.div(
     {
       id: post.id,
@@ -33,13 +33,8 @@ const BlogItem = ({ post, addLike }) => (
         style: { display: 'inline-block', minHeight: '50px' }
       },
       React.createElement(
-        Like,
-        {
-          id: post.id,
-          // likesCounter: post.meta.likesCounter,
-          likesCounter: post.likesCounter,
-          addLike
-        }
+        LikeContainer,
+        { likesCounter: post.likesCounter, id: post.id }
       ),
       React.createElement(Meta, post.meta)
     )

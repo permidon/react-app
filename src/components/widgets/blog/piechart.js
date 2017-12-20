@@ -18,16 +18,16 @@ class PieChart extends React.Component {
   componentWillUnmount() {
     this.chart.destroy();
   }
-  
-  componentWillReceiveProps() {
-    this.chart.load({ columns: this.props.columns });
+
+  componentWillReceiveProps(newProps) {
+    this.chart.load({ columns: newProps.columns });
   }
-  
+
   render() {
     return (
-      <div ref="chart" /> 
+      <div ref="chart" />
     );
-  }  
+  }
 }
 
 PieChart.propTypes = {

@@ -19,7 +19,7 @@ export default function(state = initialState, action) {
       return assign({}, initialState, { entries: action.response });
     case type.ADD_LIKE: {
       const items = cloneDeep(state.entries);
-      const item = items[action.id - 1 ];
+      const item = items[action.id - 1];
       if (item) {
         item.likesCounter += 1;
         return assign({}, state, { entries: items });

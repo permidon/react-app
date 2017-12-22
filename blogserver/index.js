@@ -16,6 +16,12 @@ application.get('/posts/:id', function(req, res) {
   res.json(posts[req.params.id - 1]);
 });
 
+application.post('/', function (req, res) {
+  post = posts[req.query['id'] - 1];
+  post.likesCounter += 1;
+  res.send(post);
+});
+
 application.listen(3001, function () {
   console.log('Server on 3001');
 });

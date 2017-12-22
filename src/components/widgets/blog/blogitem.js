@@ -34,7 +34,7 @@ const BlogItem = ({ post }) => (
       },
       React.createElement(
         LikeContainer,
-        { likesCounter: post.likesCounter, id: post.id }
+        { id: post.id }
       ),
       React.createElement(Meta, post.meta)
     )

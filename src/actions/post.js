@@ -1,12 +1,11 @@
 import * as types from 'constants/actionTypes/PostActionTypes';
 
 import { API_CALL } from 'middleware/API';
-import { postsPath } from 'helpers/routes';
 
 export function fetchPost(id) {
   return {
     [API_CALL]: {
-      endpoint: postsPath(id),
+      endpoint: `/posts/${id}`,
       method: 'GET',
       query: {},
       types: [

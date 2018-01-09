@@ -19,7 +19,6 @@ function filterPosts(posts, name) {
   };
 }
 
-
 application.get('/', function (req, res) {
   var {name} = req.query;
   postsToReturn = filterPosts(posts, name);
@@ -30,7 +29,7 @@ application.get('/posts/:id', function(req, res) {
   res.json(posts[req.params.id - 1]);
 });
 
-application.post('/', function (req, res) {
+application.post('/posts/:id/like', function (req, res) {
   var post = posts[req.query['id'] - 1];
   post.likesCounter += 1;
   res.send(post);

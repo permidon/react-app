@@ -6,10 +6,25 @@ var application = express();
 var cors = require('cors');
 var posts = require('./data').posts;
 
+var _ = require('lodash');
+
 application.use(cors());
 
+function filterPosts(posts, name) {
+  if (!name) {
+    return posts;
+  }
+  var q = RegExp(name, 'i');
+  return _.filter(posts, function(p) {
+    return p.title.match(q);
+  });
+}
+
 application.get('/', function (req, res) {
-  res.json(posts);
+  var {name} = req.query;
+  let postsToReturn = posts;
+  postsToReturn = filterPosts(postsToReturn, name);
+  res.json(postsToReturn);
 });
 
 application.get('/posts/:id', function(req, res) {
@@ -17,7 +32,7 @@ application.get('/posts/:id', function(req, res) {
 });
 
 application.post('/', function (req, res) {
-  post = posts[req.query['id'] - 1];
+  var post = posts[req.query['id'] - 1];
   post.likesCounter += 1;
   res.send(post);
 });

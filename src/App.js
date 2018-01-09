@@ -1,32 +1,42 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, match } from 'react-router';
-import { Provider } from 'react-redux';
 
-import history from 'helpers/history';
+import { AllRoutes, routes } from 'routes';
+import { Provider } from 'react-redux';
+import { matchPath, Router } from 'react-router';
+import { assign } from 'lodash';
+import { parse } from 'qs';
+
 import store from 'store';
-import routes from 'routes';
+import history from 'helpers/history';
 import prepareData from 'helpers/prepareData';
 
+// eslint-disable-next-line
 import DevTools from 'containers/DevTools';
 
 function historyCb(location) {
-  match({ location, routes }, (error, redirect, state) => {
-    if (!error && !redirect) {
+  const state = { params: {}, routes: [] };
+  routes.some(route => {
+    const match = matchPath(location.pathname, route);
+    if (match)
+    {
+      state.routes.push(route);
+      assign(state.params, match.params);
+      assign(state.query, parse(location.search.substr(1)));
       prepareData(store, state);
     }
+    return match;
   });
-
-  return true;
 }
 
-history.listenBefore(historyCb);
-
-historyCb(window.location);
+history.listen(historyCb);
+historyCb(history.location);
 
 const App = () => (
   <Provider store={store}>
-    <Router history={history} routes={routes} />
+    <Router history={history}>
+      <AllRoutes />
+    </Router>
   </Provider>
 );
 

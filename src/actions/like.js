@@ -1,11 +1,12 @@
 import * as types from 'constants/actionTypes/LikeActionTypes';
 
 import { API_CALL } from 'middleware/API';
+import { rootPath } from 'helpers/routes';
 
 export function addLike(id) {
   return {
     [API_CALL]: {
-      endpoint: '/',
+      endpoint: rootPath(),
       method: 'POST',
       query: { id },
       types: [

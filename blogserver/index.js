@@ -6,24 +6,23 @@ var application = express();
 var cors = require('cors');
 var posts = require('./data').posts;
 
-var _ = require('lodash');
+var filter = require('lodash');
 
 application.use(cors());
 
 function filterPosts(posts, name) {
   if (!name) {
     return posts;
-  }
-  var q = RegExp(name, 'i');
-  return _.filter(posts, function(p) {
-    return p.title.match(q);
-  });
+  } else {
+    var query = RegExp(name, 'i');
+    return posts.filter(post => post.title.match(query));
+  };
 }
+
 
 application.get('/', function (req, res) {
   var {name} = req.query;
-  let postsToReturn = posts;
-  postsToReturn = filterPosts(postsToReturn, name);
+  postsToReturn = filterPosts(posts, name);
   res.json(postsToReturn);
 });
 

@@ -2,10 +2,9 @@ import React from 'react';
 import DOM from 'react-dom-factories';
 import PropTypes from 'prop-types';
 
-import { map } from 'lodash';
-
 import BlogList from 'components/widgets/blog/bloglist';
-import PieChart from 'components/widgets/blog/piechart';
+import PieChartContainer from 'containers/PieChartContainer';
+import PostsSearchContainer from 'containers/PostsSearchContainer';
 
 
 class BlogPage extends React.Component {
@@ -14,10 +13,6 @@ class BlogPage extends React.Component {
   }
 
   render() {
-    const pieColumns = map(
-      this.props.posts, post => [post.title, post.likesCounter]
-    );
-
     return DOM.div(
       {className: 'ui grid'},
       React.createElement(
@@ -26,11 +21,8 @@ class BlogPage extends React.Component {
       ),
       DOM.div(
         {className: 'five wide column'},
-        React.createElement(
-          PieChart,
-          { columns: pieColumns }
-        )
-        // add search field here
+        React.createElement(PostsSearchContainer),
+        React.createElement(PieChartContainer)
       )
     );
   }

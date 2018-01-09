@@ -17,11 +17,11 @@ export default function(state = initialState, action) {
       return assign({}, initialState, { error: true });
     case types.FETCH_POST_SUCCESS:
       return assign({}, initialState, { entry: action.response });
-    case type.ADD_LIKE: {
-      if (state.entry && state.entry.id == action.id) {
+    case type.LIKE_POST_SUCCESS: {
+      if (state.entry && state.entry.id == action.response.id) {
         const item = cloneDeep(state.entry);
-        item.likesCounter += 1;
-        return assign({}, state, { entry: item });
+        item.likesCounter = action.response.likesCounter;
+        return assign({}, state, { entry: action.response });
       } else {
         return state;
       }

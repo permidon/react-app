@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
+import initialLoad from 'helpers/initialLoad';
 import PostsContainer from 'containers/PostsContainer';
 import PostContainer from 'containers/PostContainer';
 import { rootPath, postsPath } from 'helpers/routes';
@@ -13,14 +14,16 @@ export const routes = [
     path: rootPath(),
     component: PostsContainer,
     prepareData: (store) => {
-      store.dispatch(fetchPosts());
+      if (initialLoad()) return;
+      return store.dispatch(fetchPosts());
     }
   },
   {
     path: postsPath(),
     component: PostContainer,
     prepareData: (store, query, params) => {
-      store.dispatch(fetchPost(params.id));
+      if (initialLoad()) return;
+      return store.dispatch(fetchPost(params.id));
     }
   }
 ];

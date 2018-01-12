@@ -14,7 +14,7 @@ import prepareData from 'helpers/prepareData';
 
 export default (req, res) => {
   const store = createStore();
-  routes.some(route => {
+  const allRoures = routes.some(route => {
     const match = matchPath(req.url, route);
     const state = { params: {}, routes: [], query: {} };
 
@@ -48,8 +48,17 @@ export default (req, res) => {
           'index',
           { initialState, content, head }
         );
-      });
+      })
+        .catch (() => {
+          res.status(500);
+          res.render('500');
+        });
     }
     return match;
   });
+
+  if (!allRoures) {
+    res.status(404);
+    res.render('404');
+  }
 };

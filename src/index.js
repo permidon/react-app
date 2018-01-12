@@ -8,7 +8,7 @@ import App from './App';
 import '../semantic/dist/semantic.min.css';
 
 const rootEl = document.getElementById('app');
-ReactDOM.render(
+ReactDOM.hydrate(
   <AppContainer>
     <App />
   </AppContainer>,
@@ -18,7 +18,7 @@ ReactDOM.render(
 if (module.hot) {
   module.hot.accept('./App', () => {
     const NextApp = require('./App').default;
-    ReactDOM.render(
+    ReactDOM.hydrate(
       <AppContainer>
         <NextApp />
       </AppContainer>,

@@ -11,7 +11,9 @@ const Post = ({ post }) => (
     <Item.Group>
       { post && <BlogItem post = { post } /> }
     </Item.Group>
-    { post && <Helmet title={post.title} /> }
+    { post && <Helmet title={post.title} >
+      <meta name={post.title} content='keywords for searchers' />
+    </Helmet> }
   </div>
 );
 

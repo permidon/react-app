@@ -6,7 +6,6 @@ import BlogList from 'components/widgets/blog/bloglist';
 import PieChartContainer from 'containers/PieChartContainer';
 import PostsSearchContainer from 'containers/PostsSearchContainer';
 
-
 class BlogPage extends React.Component {
   constructor(props) {
     super(props);

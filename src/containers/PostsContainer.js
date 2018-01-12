@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import BlogPage from 'components/blogpage';
+import Index from 'components/views/index';
 
 const stateToProps = (state) => ({
   posts: state.posts.entries,
@@ -8,4 +8,4 @@ const stateToProps = (state) => ({
   error: state.posts.error
 });
 
-export default connect(stateToProps)(BlogPage);
+export default connect(stateToProps)(Index);

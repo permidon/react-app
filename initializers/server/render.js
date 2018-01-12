@@ -5,6 +5,8 @@ import { matchPath, StaticRouter } from 'react-router-dom';
 import { assign } from 'lodash';
 import { parse } from 'qs';
 
+import Helmet from 'react-helmet';
+
 import createStore from 'store';
 import { routes, RouteWithSubRoutes } from 'routes';
 import MainLayout from 'components/layouts/mainlayout';
@@ -39,10 +41,12 @@ export default (req, res) => {
           </Provider>
         );
 
+        const head = Helmet.rewind();
+
         res.status(200);
         res.render(
           'index',
-          { initialState, content }
+          { initialState, content, head }
         );
       });
     }

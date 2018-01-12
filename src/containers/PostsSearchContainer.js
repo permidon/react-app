@@ -1,13 +1,11 @@
 import { connect } from 'react-redux';
-import PostsSearch from 'components/elements/PostsSearch';
+import Search from 'components/widgets/blog/search';
 import { fetchPosts } from 'actions/posts';
 
-const actionsToProps = (dispatch) => (
-  {
-    search: (event) => {
-      dispatch(fetchPosts(event.currentTarget.value));
-    }
+const actionsToProps = (dispatch) => ({
+  search: (name) => {
+    dispatch(fetchPosts(name));
   }
-);
+});
 
-export default connect(null, actionsToProps)(PostsSearch);
+export default connect(null, actionsToProps)(Search);

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Form } from 'semantic-ui-react';
+import { Button, Form } from 'semantic-ui-react';
 
 class Search extends React.Component {
   constructor() {
@@ -9,9 +9,13 @@ class Search extends React.Component {
     this.state = { search: '' };
   }
 
-  handleSearch(e) {
+  setSearch(e) {
     e.preventDefault();
-    this.setState({search: e.currentTarget.value});
+    this.setState({search: e.target.value});
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
     const search = this.props.search;
     return search(this.state.search);
   }
@@ -19,12 +23,14 @@ class Search extends React.Component {
   render() {
     return (
       <Form>
-        <input
-          style={{marginTop: '25px'}}
-          type="text"
-          placeholder="Search"
-          className="form-control"
-          onChange={ this.handleSearch.bind(this) }/>
+        <div className="ui action input" style={{marginTop: '25px'}} >
+          <input
+            type="text"
+            placeholder="Type something..."
+            className="form-control"
+            onChange={ this.setSearch.bind(this) }/>
+          <Button onClick={ this.handleSubmit.bind(this) }>Search</Button>
+        </div>
       </Form>
     );
   }

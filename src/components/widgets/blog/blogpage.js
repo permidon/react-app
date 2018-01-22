@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import BlogList from 'components/widgets/blog/bloglist';
 import PieChartContainer from 'containers/PieChartContainer';
-import PostsSearchContainer from 'containers/PostsSearchContainer';
+import SearchContainer from 'containers/SearchContainer';
 
 class BlogPage extends React.Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class BlogPage extends React.Component {
       ),
       DOM.div(
         {className: 'five wide column'},
-        React.createElement(PostsSearchContainer),
+        React.createElement(SearchContainer),
         React.createElement(PieChartContainer)
       )
     );

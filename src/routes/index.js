@@ -4,14 +4,15 @@ import { Route } from 'react-router-dom';
 import initialLoad from 'helpers/initialLoad';
 import PostsContainer from 'containers/PostsContainer';
 import PostContainer from 'containers/PostContainer';
-import { rootPath, postsPath } from 'helpers/routes';
+import Contacts from 'components/views/contacts';
+import { rootPath, postPath, contactsPath } from 'helpers/routes';
 import { fetchPosts } from 'actions/posts';
 import { fetchPost } from 'actions/post';
 
 export const routes = [
   {
-    exact: true,
     path: rootPath(),
+    exact: true,
     component: PostsContainer,
     prepareData: (store) => {
       if (initialLoad()) return;
@@ -19,12 +20,17 @@ export const routes = [
     }
   },
   {
-    path: postsPath(),
+    path: postPath(),
+    exact: true,
     component: PostContainer,
     prepareData: (store, query, params) => {
       if (initialLoad()) return;
       return store.dispatch(fetchPost(params.id));
     }
+  },
+  {
+    path: contactsPath(),
+    component: Contacts
   }
 ];
 

@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { Button, Segment, Header, Container } from 'semantic-ui-react';
 
 import Link from 'components/elements/link';
+import { rootPath, contactsPath } from 'helpers/routes';
 
 const MainLayout = ({children}) => (
   <Container>
@@ -28,7 +29,9 @@ const GoBackButton = withRouter(
 const Logo = () => (
   <Segment>
     <Header>
-      <Link to='/'>Thinknetica Blog</Link>
+      <Link to={rootPath()}>Thinknetica Blog </Link>
+      |
+      <Link to={contactsPath()}> Contacts</Link>
     </Header>
   </Segment>
 );

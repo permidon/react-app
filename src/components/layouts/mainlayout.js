@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { Button, Segment, Header, Container } from 'semantic-ui-react';
 
 import Link from 'components/elements/link';
-import { rootPath, contactsPath } from 'helpers/routes';
+import { rootPath, newPostPath, contactsPath } from 'helpers/routes';
 
 const MainLayout = ({children}) => (
   <Container>
@@ -29,9 +29,11 @@ const GoBackButton = withRouter(
 const Logo = () => (
   <Segment>
     <Header>
-      <Link to={rootPath()}>Thinknetica Blog </Link>
-      |
-      <Link to={contactsPath()}> Contacts</Link>
+      <div className="ui horizontal list" >
+        <Link className="item" to={rootPath()}>Thinknetica Blog </Link>
+        <Link className="item" to={newPostPath()}>New Post</Link>
+        <Link className="item" to={contactsPath()}>Contacts</Link>
+      </div>
     </Header>
   </Segment>
 );

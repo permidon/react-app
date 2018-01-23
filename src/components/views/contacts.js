@@ -6,18 +6,16 @@ import classNames from 'classnames';
 class Contacts extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       form: {
         values: {
-          name: '',
+          fullName: '',
           email: '',
           message: ''
         },
         errors: {}
       }
     };
-
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -37,16 +35,13 @@ class Contacts extends React.Component {
       switch (fieldName) {
         case 'email':
           this.clearError('email');
-
           if (e.target.value.length < 3) {
             this.setState(
               set(assign({}, this.state), 'form.errors.email', true)
             );
           }
-
           break;
       }
-
       this.setState(
         set(assign({}, this.state),
           ['form', 'values', fieldName], e.target.value)
@@ -55,17 +50,16 @@ class Contacts extends React.Component {
   }
 
   render() {
-    const { name, email, message } = this.state.form.values;
-
+    const { fullName, email, message } = this.state.form.values;
     return (
       <div>
         <h1>Contacts</h1>
         <form onSubmit={this.onSubmit} className="ui form">
           <Text
-            name="name"
-            label="Name"
-            value={name}
-            onChange={this.handleChange('name')}
+            name="fullName"
+            label="Full name"
+            value={fullName}
+            onChange={this.handleChange('fullName')}
           />
           <Text
             name="email"
@@ -80,7 +74,7 @@ class Contacts extends React.Component {
             value={message}
             onChange={this.handleChange('message')}
           />
-          <input type="submit" value="Send" className="ui button primary" />
+          <input type="submit" value="Submit" className="ui button primary" />
         </form>
       </div>
     );

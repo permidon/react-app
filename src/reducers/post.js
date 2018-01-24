@@ -26,6 +26,14 @@ export default function(state = initialState, action) {
         return state;
       }
     }
+    case types.EDIT_POST_REQUEST:
+      return assign({}, state, { isFetching: true });
+    case types.EDIT_POST_ERROR:
+      return assign({}, state, { error: true });
+    case types.EDIT_POST_SUCCESS:
+      return assign({}, state, { entry: action.response });
+    case types.NEW_POST_SUCCESS:
+      return assign({}, state, { entry: action.response });
     default:
       return state;
   }

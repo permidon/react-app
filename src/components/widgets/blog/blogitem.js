@@ -8,7 +8,7 @@ import LikeContainer from 'containers/LikeContainer';
 import Meta from 'components/widgets/blog/elements/meta';
 
 import Link from 'components/elements/link';
-import { postsPath } from 'helpers/routes';
+import { postPath, editPostPath } from 'helpers/routes';
 
 const BlogItem = ({ post }) => (
   DOM.div(
@@ -24,7 +24,7 @@ const BlogItem = ({ post }) => (
       React.createElement(Image, post.image),
       DOM.h3(
         {},
-        React.createElement(Link, {to: postsPath(post.id)}, post.title)
+        React.createElement(Link, {to: postPath(post.id)}, post.title)
       ),
       React.createElement(TextBox, {}, post.txt)),
     DOM.div(
@@ -36,7 +36,8 @@ const BlogItem = ({ post }) => (
         LikeContainer,
         { id: post.id, likesCounter: post.likesCounter }
       ),
-      React.createElement(Meta, post.meta)
+      React.createElement(Meta, post.meta),
+      React.createElement(Link, {to: editPostPath(post.id)}, 'Edit')
     )
   )
 );

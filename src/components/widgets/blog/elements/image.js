@@ -13,7 +13,7 @@ Image.propTypes = {
 };
 
 Image.defaultProps = {
-  src: 'http://tinyurl.com/ybrmbhey',
+  src: '/src/static/images/noimage.png',
   width: 128,
   height: 128,
   alt: 'Default post image'

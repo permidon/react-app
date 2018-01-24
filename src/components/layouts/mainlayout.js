@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
 import { Button, Segment, Header, Container } from 'semantic-ui-react';
 
 import Link from 'components/elements/link';
-
-import history from 'helpers/history';
 
 const MainLayout = ({children}) => (
   <Container>
@@ -20,8 +19,10 @@ MainLayout.propTypes = {
   children: PropTypes.node
 };
 
-const GoBackButton = () => (
-  <Button onClick={() => history.goBack()}>Назад</Button>
+const GoBackButton = withRouter(
+  ({ history }) => (
+    <Button onClick={history.goBack}>Назад</Button>
+  )
 );
 
 const Logo = () => (

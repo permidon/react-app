@@ -8,11 +8,12 @@ import { assign } from 'lodash';
 import { parse } from 'qs';
 
 import MainLayout from 'components/layouts/mainlayout';
-import store from 'store';
+import createStore from 'store';
 import history from 'helpers/history';
 import prepareData from 'helpers/prepareData';
-// eslint-disable-next-line
 import DevTools from 'containers/DevTools';
+
+const store = createStore(window.__INITIAL_STATE__);
 
 function historyCb(location) {
   const state = { params: {}, routes: [] };
@@ -51,7 +52,10 @@ const App = () => (
 
 ReactDOM.render(
   <DevTools store={store} />,
-  document.getElementById('devtools')
+  document.getElementById('devtools'),
+  () => {
+    delete window.__INITIAL_STATE__;
+  }
 );
 
 export default App;

@@ -3,7 +3,8 @@ import Like from 'components/widgets/blog/elements/like';
 import { addLike } from 'actions/like';
 
 const stateToProps = (state, ownProps) => ({
-  likesCounter: state.posts.entries[ownProps.id - 1].likesCounter
+  id: ownProps.id,
+  likesCounter: ownProps.likesCounter
 });
 
 const actionsToProps = (dispatch) => ({

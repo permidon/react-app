@@ -30,7 +30,7 @@ const Logo = () => (
   <Segment>
     <Header>
       <div className="ui horizontal list" >
-        <Link className="item" to={rootPath()}>Thinknetica Blog </Link>
+        <Link className="item home" to={rootPath()}>Thinknetica Blog </Link>
         <Link className="item" to={newPostPath()}>New Post</Link>
         <Link className="item" to={contactsPath()}>Contacts</Link>
       </div>

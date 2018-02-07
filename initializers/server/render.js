@@ -11,6 +11,7 @@ import createStore from 'store';
 import { routes, RouteWithSubRoutes } from 'routes';
 import MainLayout from 'components/layouts/mainlayout';
 import prepareData from 'helpers/prepareData';
+import webpackAsset from './webpackAsset';
 
 export default (req, res) => {
   const store = createStore();
@@ -46,7 +47,7 @@ export default (req, res) => {
         res.status(200);
         res.render(
           'index',
-          { initialState, content, head }
+          { initialState, content, head, webpackAsset }
         );
       })
         .catch (() => {

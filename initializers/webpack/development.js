@@ -38,7 +38,7 @@ export default {
   },
 
   resolve: {
-    modules: ['node_modules', root]
+    modules: [root, 'node_modules']
   },
 
   plugins: [
